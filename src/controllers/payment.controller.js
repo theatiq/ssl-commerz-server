@@ -3,9 +3,7 @@ const { productCollection } = require("../utils/connectDB")
 const { default: axios } = require("axios")
 
 
-// Store ID: techs67ff202246e5e   techs67ff202246e5e
-// Store Password (API/Secret Key): techs67ff202246e5e@ssl
-//                                  techs67ff202246e5e@ssl
+
 // Merchant Panel URL: https://sandbox.sslcommerz.com/manage/ (Credential as you inputted in the time of registration)
 // Store name: testtechsp79g
 // Registered URL: http://localhost:5173
@@ -27,8 +25,8 @@ const postPayment = async (req, res) => {
     console.log("Payment Info :", payment)
     // Step-1: Initialize Data
     const initiate = {
-        store_id: "techs67ff202246e5e",
-        store_passwd: "techs67ff202246e5e@ssl",
+        store_id: process.env.STORE_ID,
+        store_passwd: process.env.STORE_PASS,
         total_amount: payment.price,
         currency: 'BDT',
         tran_id: payment.trxId, // use unique tran_id for each api call
